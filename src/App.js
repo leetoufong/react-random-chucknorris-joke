@@ -16,17 +16,14 @@ class App extends Component {
 
   componentDidMount() {
     this.setState({ isLoading: true })
-    this.fetchData();
-  };
-
-  fetchData() {
+    
     fetch(API + QUERY)
       .then(response => response.json())
       .then(data => this.setState({
         fact: data,
         isLoading: false
       }))
-  }
+  };
 
   render() {
     const { isLoading, fact } = this.state;
@@ -40,7 +37,6 @@ class App extends Component {
     return(
       <div>
         { fact.value }
-        <button onClick={ this.fetchData }>Get Chucked</button>
       </div>
     )
   };
