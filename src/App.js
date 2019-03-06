@@ -9,27 +9,41 @@ class App extends Component {
     super(props);
 
     this.state = {
-      isLoaded: false,
-      jokes: []
+      isLoading: false,
+      fact: ''
     }
-  }
-  
+  };
+
   componentDidMount() {
+    this.setState({ isLoading: true })
+    this.fetchData();
+  };
+
+  fetchData() {
     fetch(API + QUERY)
       .then(response => response.json())
       .then(data => this.setState({
-        isLoaded: true,
-        jokes: data.jokes
+        fact: data,
+        isLoading: false
       }))
   }
 
   render() {
+    const { isLoading, fact } = this.state;
+
+    if (isLoading) {
+      return(
+        <h1>Loading...</h1>
+      )
+    }
+
     return(
       <div>
-        Howdy
+        { fact.value }
+        <button onClick={ this.fetchData }>Get Chucked</button>
       </div>
     )
-  }
+  };
 }
 
 export default App;

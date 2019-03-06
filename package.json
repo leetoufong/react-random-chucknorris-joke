@@ -2,6 +2,10 @@
   "name": "react-random-chucknorris-joke",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/leetoufong/react-random-chucknorris-joke.git"
+  },
   "dependencies": {
     "node-sass": "^4.11.0",
     "react": "^16.8.3",
